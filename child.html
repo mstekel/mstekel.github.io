@@ -3,7 +3,7 @@
 		<script>
 			function init() {
 				document.querySelector("#notify-parent-window").addEventListener('click', function() {
-					window.opener.postMessage("Message from child", { first_name: 'Moshe', last_name: 'stekel' });
+					window.opener.postMessage({ type: 'child-to-parent', message: 'Sample text' });
 				});
 				
 				window.addEventListener('message', function(e) {
