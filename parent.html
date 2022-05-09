@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<script>
+			function init() {
+				let child_window_handle = null;
+				
+				document.querySelector('#open-child-window').addEventListener('click', function() {
+					child_window_handle = window.open('child.html', '_blank');
+				});
+				
+				document.querySelector('#notify-child-window').addEventListener('click', function() {
+					child_window_handle.postMessage('Message to the child', "*");
+				});
+				
+				window.addEventListener('message', function(e) {
+					ocument.querySelector('#notification').innerText = e.data;
+				}, false);
+			}
+		</script>
+	</head>
+	<body onload="init()">
+		<button id="open-child-window">Open child window</button>
+		<button id="notify-child-window">Notify child window</button>
+		<div id="notification">
+		</div>
+	</body>
+</html>
