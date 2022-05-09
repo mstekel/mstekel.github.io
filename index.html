@@ -9,7 +9,9 @@
 				});
 				
 				document.querySelector('#notify-child-window').addEventListener('click', function() {
-					child_window_handle.postMessage({ type: 'parent-to-child', message: 'Sample text' });
+					if(child_window_handle) {
+						child_window_handle.postMessage({ type: 'parent-to-child', message: 'Sample text' });
+					}
 				});
 				
 				window.addEventListener('message', function(e) {
